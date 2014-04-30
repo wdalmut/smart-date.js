@@ -1,0 +1,10 @@
+{
+    "name": "smart-date",
+    "devDependencies": {
+        "karma": "0.12.*",
+        "karma-cli": "*",
+        "karma-chrome-launcher": "*",
+        "karma-jasmine": "*"
+    }
+}
+
