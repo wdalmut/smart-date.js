@@ -1,4 +1,4 @@
-describe("corley.filters", function() {
+describe("smart date filter", function() {
     beforeEach(function() {
         module('corley.filters');
     });

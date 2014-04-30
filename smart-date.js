@@ -5,7 +5,7 @@ angular.module('corley.filters', ['pascalprecht.translate'])
     .config(function($translateProvider){
         $translateProvider.translations('it', {
             "less than a minute ago": "meno di un minuto fa",
-            "minute ago": "minuti fa",
+            "minutes ago": "minuti fa",
             "today": "oggi"
         });
     })
