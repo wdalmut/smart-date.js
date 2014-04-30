@@ -16,9 +16,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'bower_components/angular/angular.js',
+        'bower_components/angular-translate/angular-translate.js',
         'bower_components/angular-mocks/angular-mocks.js',
         'smart-date.js',
-        //'lang.it.js',
         '*-spec.js'
     ],
 
