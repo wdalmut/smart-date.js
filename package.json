@@ -1,9 +1,13 @@
 {
-  "name": "smart-date",
-  "devDependencies": {
-    "karma": "0.12.*",
-    "karma-cli": "*",
-    "karma-phantomjs-launcher": "*",
-    "karma-jasmine": "*"
-  }
+    "name": "smart-date",
+    "devDependencies": {
+        "karma": "0.12.*",
+        "karma-cli": "*",
+        "karma-phantomjs-launcher": "*",
+        "karma-jasmine": "*",
+        "phantomjs": "*"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/karma start --single-run"
+    }
 }
