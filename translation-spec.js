@@ -1,6 +1,6 @@
 describe("smart-date translations", function() {
     beforeEach(function() {
-        module('corley.filters');
+        module('corley.filter.date');
     });
 
     var _$filter;

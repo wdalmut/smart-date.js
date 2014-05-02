@@ -1,7 +1,7 @@
 'use strict';
 
 /* Filters */
-angular.module('corley.filters', ['pascalprecht.translate'])
+angular.module('corley.filter.date', ['pascalprecht.translate'])
     .config(function($translateProvider){
         $translateProvider.translations('en', {
             "minutes ago": "{{minutes}} minutes ago",

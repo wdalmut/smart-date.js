@@ -5,7 +5,7 @@
 The simple filter transform a date into a more simple string
 
 ```javascript
-angular.module('corley.filters');
+angular.module('corley.filter.date');
 ```
 
 In your views
@@ -24,3 +24,4 @@ Just an example of how to test AngularJS filters
 ```
 npm test
 ```
+
