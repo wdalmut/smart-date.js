@@ -18,6 +18,7 @@ describe("smart date filter", function() {
     });
 
     var dataProvider = [
+        {"in": [new Date()], "out": "less than a minute ago"},
         {"in": [new Date(), new Date()], "out": "less than a minute ago"},
         {"in": [new Date(new Date().getTime() - 59 * 1000), new Date()], "out": "less than a minute ago"},
         {"in": [new Date(new Date().getTime() - 60 * 1000), new Date()], "out": "1 minutes ago"},
