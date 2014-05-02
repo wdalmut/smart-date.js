@@ -11,7 +11,7 @@ angular.module('corley.filters');
 In your views
 
 ```html
-<p>{{ updateOn | smartDate | translate }}</p>
+<p>{{ updateOn | smartDate }}</p>
 ```
 
 The filter uses `angular-translate` in order to provides internationalization

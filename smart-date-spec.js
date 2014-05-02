@@ -9,6 +9,8 @@ describe("smart date filter", function() {
     beforeEach(inject(function($filter, $translate) {
         _$filter = $filter;
         _$translate = $translate;
+        _$translate.preferredLanguage('en');
+        _$translate.use('en');
     }));
 
     it('should has a smartDate filter', function() {
@@ -41,8 +43,24 @@ describe("smart date filter", function() {
             .toBe('today');
     });
 
-    it('should print the full date', function() {
+    it('should say yesterday', function() {
         var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date("1970/01/01"))).toBe('gio 01 gen 1970 00:00:00 CET');
+        expect(smartDateFilter(new Date(new Date().getTime() - 1000*60*60*24), new Date()))
+            .toBe('yesterday');
+    });
+
+    it('should print 2 days ago', function() {
+        var smartDateFilter = _$filter('smartDate');
+        expect(smartDateFilter(new Date("1970/01/01"), new Date("1970/01/03"))).toBe('2 days ago');
+    });
+
+    it('should print 1 months ago', function() {
+        var smartDateFilter = _$filter('smartDate');
+        expect(smartDateFilter(new Date("1970/01/01"), new Date("1970/02/01"))).toBe('1 months ago');
+    });
+
+    it('should print 5 years ago', function() {
+        var smartDateFilter = _$filter('smartDate');
+        expect(smartDateFilter(new Date("1970/01/01"), new Date("1975/01/01"))).toBe('5 years ago');
     });
 });
