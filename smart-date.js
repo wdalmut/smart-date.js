@@ -5,13 +5,17 @@ angular.module('corley.filters', ['pascalprecht.translate'])
     .config(function($translateProvider){
         $translateProvider.translations('en', {
             "minutes ago": "{{minutes}} minutes ago",
-            "days ago": "{{days}} days ago"
+            "days ago": "{{days}} days ago",
+            "months ago": "{{months}} months ago",
+            "years ago": "{{years}} years ago"
         }).translations('it', {
             "less than a minute ago": "meno di un minuto fa",
             "minutes ago": "{{minutes}} minuti fa",
             "today": "oggi",
             "yesterday": "ieri",
             "days ago": "{{days}} giorni fa",
+            "months ago": "{{months}} mesi fa",
+            "years ago": "{{years}} anni fa"
         });
     })
     .filter("smartDate", function($filter) {
@@ -31,9 +35,11 @@ angular.module('corley.filters', ['pascalprecht.translate'])
                 return $filter('translate')("yesterday");
             } else if (diff < 84600*30) {
                 return $filter('translate')('days ago', {days: parseInt(diff / 84600)});
+            } else if (diff < 84600*30*12) {
+                return $filter('translate')('months ago', {months: parseInt(diff / (84600*30))});
             }
 
-            return diff;
+            return $filter('translate')('years ago', {years: parseInt(diff / (84600*30*12))});
 
         };
     });

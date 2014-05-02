@@ -17,50 +17,28 @@ describe("smart date filter", function() {
         expect(_$filter('smartDate')).not.toBeNull();
     });
 
-    it('should say just now', function() {
+    var dataProvider = [
+        {"in": [new Date(), new Date()], "out": "less than a minute ago"},
+        {"in": [new Date(new Date().getTime() - 59 * 1000), new Date()], "out": "less than a minute ago"},
+        {"in": [new Date(new Date().getTime() - 60 * 1000), new Date()], "out": "1 minutes ago"},
+        {"in": [new Date(new Date().getTime() - 5*60*1000), new Date()], "out": "5 minutes ago"},
+        {"in": [new Date(new Date().getTime() - 60*60*1000), new Date()], "out": "today"},
+        {"in": [new Date(new Date().getTime() - 23*60*60*1000 + 59*60*1000), new Date()], "out": "today"},
+        {"in": [new Date(new Date().getTime() - 24*60*60*1000), new Date()], "out": "yesterday"},
+        {"in": [new Date(new Date().getTime() - 48*60*60*1000), new Date()], "out": "2 days ago"},
+        {"in": [new Date(new Date().getTime() - 5*24*60*60*1000), new Date()], "out": "5 days ago"},
+        {"in": [new Date(new Date().getTime() - 30*24*60*60*1000), new Date()], "out": "1 months ago"},
+        {"in": [new Date(new Date().getTime() - 11*30*24*60*60*1000), new Date()], "out": "11 months ago"},
+        {"in": [new Date(new Date().getTime() - 12*30*24*60*60*1000), new Date()], "out": "1 years ago"},
+        {"in": [new Date(new Date().getTime() - 5*12*30*24*60*60*1000), new Date()], "out": "5 years ago"}
+    ];
+
+    it('should say the right sentence', function() {
         var smartDateFilter = _$filter('smartDate');
 
-        expect(smartDateFilter(new Date())).toBe('less than a minute ago');
-        expect(smartDateFilter(new Date(new Date().getTime() - 59000), new Date()))
-            .toBe('less than a minute ago');
-    });
-
-    it('should say 5 minutes ago', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date(new Date().getTime() - 5*60000), new Date()))
-            .toBe('5 minutes ago');
-    });
-
-    it('should say 59 minutes ago', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date(new Date().getTime() - 59*60000), new Date()))
-            .toBe('59 minutes ago');
-    });
-
-    it('should say today', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date(new Date().getTime() - 70*60000), new Date()))
-            .toBe('today');
-    });
-
-    it('should say yesterday', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date(new Date().getTime() - 1000*60*60*24), new Date()))
-            .toBe('yesterday');
-    });
-
-    it('should print 2 days ago', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date("1970/01/01"), new Date("1970/01/03"))).toBe('2 days ago');
-    });
-
-    it('should print 1 months ago', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date("1970/01/01"), new Date("1970/02/01"))).toBe('1 months ago');
-    });
-
-    it('should print 5 years ago', function() {
-        var smartDateFilter = _$filter('smartDate');
-        expect(smartDateFilter(new Date("1970/01/01"), new Date("1975/01/01"))).toBe('5 years ago');
+        for (var i=0; i<dataProvider.length; i++) {
+            data = dataProvider[i];
+            expect(smartDateFilter(data.in[0], data.in[1])).toBe(data.out);
+        }
     });
 });

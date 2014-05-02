@@ -16,7 +16,6 @@ describe("smart-date translations", function() {
 
     it('should available in italian', function() {
         expect(_$filter('translate')('less than a minute ago')).toBe('meno di un minuto fa');
-        expect(_$filter('translate')('minutes ago')).toBe('minuti fa');
         expect(_$filter('translate')('today')).toBe('oggi');
     });
 });
