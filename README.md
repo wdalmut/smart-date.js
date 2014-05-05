@@ -8,6 +8,16 @@ The simple filter transform a date into a more simple string
 angular.module('corley.filter.date');
 ```
 
+Configure your `$translateProvider`
+```javascript
+config(['$translateProvider', function ($translateProvider) {
+  ...
+  $translateProvider.preferredLanguage('en');
+  $translateProvider.use('en');
+  ...
+}]);
+```
+
 In your views
 
 ```html
